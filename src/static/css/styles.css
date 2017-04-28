@@ -1,0 +1,34 @@
+/*body {
+  background-image: url("../images/food.png");
+  background-repeat: repeat;
+}*/
+
+nav {
+  background-color: transparent;
+  background: transparent;
+  border-color: transparent;
+}
+
+.fa-google {
+  font-size: 50px;
+}
+
+/*nav li font {
+  color: white;
+}
+
+.nav-pills>li>a:hover, .nav>li>a:focus, .nav>li>a:hover {
+  border: 1px solid white !important;
+  background-color: transparent !important;
+}
+
+.btn-primary {
+  border-radius: 20px !important;
+  border: 1px solid white !important;
+  background-color: transparent !important;
+}
+
+.btn-primary:hover {
+  background-color: white !important;
+  color: black !important;
+}*/

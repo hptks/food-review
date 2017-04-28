@@ -1,1 +1,1 @@
-# food-review
+# Food review application

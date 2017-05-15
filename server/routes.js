@@ -1,24 +1,31 @@
 import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
 
 import User from '../models/User'
+
+mongoose.connect('mongodb://localhost/authentication')
+let db = mongoose.connection
+db.once('open', () => {
+  console.log('Connection is now open...')
+})
 
 const handleRoutes = (app) => {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
 
-  app.post('/', (request, response) => {
+  app.post('/signup', (request, response) => {
     const { name, email, username, password } = request.body
   })
 
-  app.post('/login', (request, response) => {
+  app.post('/signin', (request, response) => {
     const { username, password } = request.body
-    User.find({ username, password }, (error, user) => {
+    console.log(User.find({}, (error, users) => {
       if (error) {
-        response.json({ status: 404 })
-      } else {
-        response.json({ status: 200, username })
+        response.json(status: 404)
       }
-    })
+
+      console.log(users)
+    }))
   })
 }
 

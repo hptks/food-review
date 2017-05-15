@@ -4,8 +4,7 @@ const initialState={
   username: '',
   password: '',
   busy: false,
-  isLoggedIn: false,
-  isSignedUp: false
+  isLoggedIn: false
 }
 
 export default function reducer(state=initialState, action) {
@@ -23,7 +22,8 @@ export default function reducer(state=initialState, action) {
     case 'SIGN_UP_REQUEST':
       return Object.assign({}, state, { busy: true })
     case 'SIGN_UP_SUCCESS': {
-
+      const { name, email, username } = action.payload
+      return Object.assign({}, state, { name, email, username, busy: false, isLoggedIn: true })
     }
     case 'SIGN_UP_FAIL':
       return initialState

@@ -5,7 +5,7 @@ export const signinSuccess = (username, password) => ({ type: 'SIGN_IN_SUCCESS',
 export const signinFail = () => ({ type: 'SIGN_IN_FAIL' })
 
 export const signupRequest = () => ({ type: 'SIGN_UP_REQUEST' })
-export const signupSuccess = (name, email, username, password) => ({ type: 'SIGN_UP_SUCCESS', payload: { name, email, username, password } })
+export const signupSuccess = (name, email, username) => ({ type: 'SIGN_UP_SUCCESS', payload: { name, email, username, password } })
 export const signupFail = () => ({ type: 'SIGN_UP_FAIL' })
 
 export const logoutRequest = () => ({ type: 'SIGN_OUT' })
@@ -15,7 +15,7 @@ export function signin(username, password) {
     dispatch(signinRequest())
     axios({
       method: 'post',
-      url: '/login',
+      url: '/signin',
       data: {
         username,
         password
@@ -35,7 +35,7 @@ export function signup(name, email, username, password) {
     dispatch(signupRequest())
     axios({
       method: 'post',
-      url: '/',
+      url: '/signup',
       data: {
         name,
         email,
@@ -44,7 +44,7 @@ export function signup(name, email, username, password) {
       }
     })
     .then(function(response) {
-      //dispatch(signupSuccess())
+      dispatch(signupSuccess(response.data.name, response.data.email, response.data.username))
     })
     .catch(function(error) {
       dispatch(signupFail())

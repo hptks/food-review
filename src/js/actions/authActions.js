@@ -22,7 +22,7 @@ export function signin(username, password) {
       }
     })
     .then(function(response) {
-      dispatch(signinSuccess(response.data.username))
+      //dispatch(signinSuccess(response.data.username))
     })
     .catch(function(error) {
       dispatch(signinFail())

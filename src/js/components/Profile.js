@@ -9,14 +9,12 @@ import { connect } from 'react-redux'
 
 export default class Profile extends React.Component {
   render() {
-    const { name, email, username, password } = this.props.users
+    const { username, password } = this.props.users
 
     return (
       <div class="container">
-        <div>{name}</div>
-        <div>{email}</div>
         <div>{username}</div>
-        <div>{username}</div>
+        <div>{password}</div>
       </div>
     )
   }

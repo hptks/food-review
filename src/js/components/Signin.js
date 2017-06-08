@@ -33,15 +33,13 @@ export default class Signin extends React.Component {
 
   requestLogin() {
     const { username, password } = this.state
-
     this.props.dispatch(signin(username, password))
     this.setState({
       username: '',
       password: ''
     })
-
     if (this.props.users.isLoggedIn) {
-      browserHistory.push('/profile')
+      browserHistory.push('profile')
     }
   }
 

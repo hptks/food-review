@@ -54,10 +54,6 @@ export default class Signup extends React.Component {
       username: '',
       password: ''
     })
-
-    if (this.props.users.isLoggedIn) {
-      browserHistory.push('/profile')
-    }
   }
 
   render() {

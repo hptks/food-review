@@ -13,7 +13,7 @@ import { signout } from '../actions/authActions'
 export default class Navigation extends React.Component {
   requestLogOut() {
     this.props.dispatch(signout())
-    browserHistory.push('/login')
+    browserHistory.push('/signin')
   }
 
   render() {

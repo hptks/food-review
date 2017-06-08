@@ -24,15 +24,26 @@ const handleRoutes = (app) => {
         const user = new User({ name, email, username, password })
         user.save()
       } else {
-        response.json({ status: 404 })
+        response.send({ status: 404 })
       }
     })
 
-    response.json({ status: 200, name, email, username, password })
+    response.send({ status: 200, name, email, username, password })
   })
 
   app.post('/signin', (request, response) => {
     const { username, password } = request.body
+    // User.find({ username, password }, (error, user) => {
+    //   if (error) {
+    //     throw error
+    //   }
+    //
+    //   if (user.length == 0) {
+    //     response.json({ status: 404 })
+    //   } else {
+        response.send({ status: 200, username, password })
+    //   }
+    // })
   })
 }
 

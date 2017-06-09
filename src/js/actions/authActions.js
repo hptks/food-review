@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const signinRequest = () => ({ type: 'SIGN_IN_REQUEST' })
-export const signinSuccess = (username, password) => ({ type: 'SIGN_IN_SUCCESS', payload: { username, password } })
+export const signinSuccess = (username, password, error) => ({ type: 'SIGN_IN_SUCCESS', payload: { username, password, error } })
 export const signinFail = () => ({ type: 'SIGN_IN_FAIL' })
 
 export const signupRequest = () => ({ type: 'SIGN_UP_REQUEST' })
@@ -22,7 +22,7 @@ export function signin(username, password) {
       }
     })
     .then(function(response) {
-      dispatch(signinSuccess(response.data.username, response.data.password))
+      dispatch(signinSuccess(response.data.username, response.data.password, response.data.error))
     })
     .catch(function(error) {
       dispatch(signinFail())

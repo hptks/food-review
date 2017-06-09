@@ -3,6 +3,7 @@ const initialState={
   email: '',
   username: '',
   password: '',
+  error: '',
   busy: false,
   isLoggedIn: false
 }
@@ -11,12 +12,14 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case 'SIGN_IN_REQUEST': {
       return Object.assign({}, state, { busy: true })
-      break;
     }
     case 'SIGN_IN_SUCCESS': {
-      const { username, password } = action.payload
-      return Object.assign({}, state, { username, password, busy: false, isLoggedIn: true })
-      break;
+      const { username, password, error } = action.payload
+      if (error.length > 0) {
+          return Object.assign({}, state, { error, busy: false, isLoggedIn: false })
+      } else {
+        return Object.assign({}, state, { username, password, busy: false, isLoggedIn: true })
+      }
     }
     case 'SIGN_IN_FAIL':
       return initialState

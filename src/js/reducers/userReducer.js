@@ -9,11 +9,14 @@ const initialState={
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'SIGN_IN_REQUEST':
+    case 'SIGN_IN_REQUEST': {
       return Object.assign({}, state, { busy: true })
+      break;
+    }
     case 'SIGN_IN_SUCCESS': {
       const { username, password } = action.payload
       return Object.assign({}, state, { username, password, busy: false, isLoggedIn: true })
+      break;
     }
     case 'SIGN_IN_FAIL':
       return initialState

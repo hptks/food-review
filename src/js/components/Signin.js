@@ -38,9 +38,12 @@ export default class Signin extends React.Component {
       username: '',
       password: ''
     })
-    if (this.props.users.isLoggedIn) {
-      browserHistory.push('profile')
-    }
+
+    setTimeout(() => {
+      if (this.props.users.isLoggedIn) {
+        browserHistory.push('/profile')
+      }
+    }, 1000)
   }
 
   render() {

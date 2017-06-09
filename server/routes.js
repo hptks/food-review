@@ -41,7 +41,7 @@ const handleRoutes = (app) => {
     //   if (user.length == 0) {
     //     response.json({ status: 404 })
     //   } else {
-        response.send({ status: 200, username, password })
+        response.send({ status: 200, username, password, isLoggedIn: true })
     //   }
     // })
   })

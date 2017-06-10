@@ -21,7 +21,7 @@ const handleRoutes = (app) => {
       }
 
       if (user.length == 0) {
-        const user = new User({ name, email, username, password, error: false })
+        const user = new User({ name, email, username, password })
         user.save()
       } else {
         response.send({ status: 404, error: true })

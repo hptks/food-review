@@ -1,5 +1,5 @@
 import assert from 'assert'
-import * as actions from '../src/js/actions/userActions'
+import * as actions from '../src/js/actions/authActions'
 
 describe('Testing actions', () => {
   it('sign in request action', () => {

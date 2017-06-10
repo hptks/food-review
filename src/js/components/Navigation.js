@@ -26,7 +26,7 @@ export default class Navigation extends React.Component {
             <li><Link to='/'><font>Home</font></Link></li>
             <li>
               {isLoggedIn ? (
-                <a onClick={this.requestLogOut.bind(this)}><font>Sign out ({username})</font></a>
+                <Link to='/signin' onClick={this.requestLogOut.bind(this)}><font>Sign out ({username})</font></Link>
               ) : (
                 <Link to='/signin'><font>Sign in</font></Link>
               )}

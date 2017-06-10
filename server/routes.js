@@ -21,10 +21,10 @@ const handleRoutes = (app) => {
       }
 
       if (user.length == 0) {
-        const user = new User({ name, email, username, password, error: '' })
+        const user = new User({ name, email, username, password, error: false })
         user.save()
       } else {
-        response.send({ status: 200, name, email, username, password, error: 'User already exists.' })
+        response.send({ status: 404, error: true })
       }
     })
   })
@@ -37,9 +37,9 @@ const handleRoutes = (app) => {
       }
 
       if (user.length == 0) {
-        response.send({ status: 404, username, password, error: 'User does not exist.' })
+        response.send({ status: 404, error: true })
       } else {
-        response.send({ status: 200, username, password, error: '' })
+        response.send({ status: 200, username, password, error: false })
       }
     })
   })

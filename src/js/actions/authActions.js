@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const signinRequest = () => ({ type: 'SIGN_IN_REQUEST' })
-export const signinSuccess = (username, password, error) => ({ type: 'SIGN_IN_SUCCESS', payload: { username, password, error } })
+export const signinSuccess = (username, password) => ({ type: 'SIGN_IN_SUCCESS', payload: { username, password } })
 export const signinFail = () => ({ type: 'SIGN_IN_FAIL' })
 
 export const signupRequest = () => ({ type: 'SIGN_UP_REQUEST' })
@@ -22,7 +22,11 @@ export function signin(username, password) {
       }
     })
     .then(function(response) {
-      dispatch(signinSuccess(response.data.username, response.data.password, response.data.error))
+      if (response.data.error) {
+        dispatch(signinFail())
+      } else {
+        dispatch(signinSuccess(response.data.username, response.data.password))
+      }
     })
     .catch(function(error) {
       dispatch(signinFail())
@@ -44,7 +48,11 @@ export function signup(name, email, username, password) {
       }
     })
     .then(function(response) {
-      dispatch(signupSuccess(response.data.name, response.data.email, response.data.username, response.data.password))
+      if (response.data.error) {
+        dispatch(signupFail())
+      } else {
+        dispatch(signupSuccess(response.data.name, response.data.email, response.data.username, response.data.password))
+      }
     })
     .catch(function(error) {
       dispatch(signupFail())
